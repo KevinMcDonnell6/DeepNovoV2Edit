@@ -5,8 +5,9 @@ file  = "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRe
 file  = "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter (copy)/DeepNovo.log"
 
 files= [
-	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log",
-        "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter (copy)/DeepNovo.log"
+
+        "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter (copy)/DeepNovo.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log"
 ]
 
 for file in files:
@@ -24,6 +25,13 @@ for file in files:
 				train_loss.append(float(tp))
 				val_loss.append(float(vp))
 			line = file_handle.readline()
-	plt.plot(train_loss)
+			
+			## NB not in print to file only console
+#			if "learning" in line:
+#				#train_loss.append(min(train_loss))
+#				val_loss.append(max(train_loss))
+			if "best" in line:
+				val_loss.append(max(train_loss))
+	#plt.plot(train_loss)
 	plt.plot(val_loss)
 plt.show()
