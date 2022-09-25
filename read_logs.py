@@ -7,8 +7,10 @@ file  = "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRe
 files= [
 
         "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter (copy)/DeepNovo.log",
-	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log"
-	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/console_log.log"
+	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/console_log.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA (wrong) - noNorm and zeroGrad/DeepNovo.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA/DeepNovo.log"
 ]
 
 for file in files:

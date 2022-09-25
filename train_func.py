@@ -274,9 +274,9 @@ def train():
         test_losses = []
         
         # 
-        
+        dense_optimizer.zero_grad()
         for i, data in enumerate(train_data_loader):
-            dense_optimizer.zero_grad()
+            #dense_optimizer.zero_grad() # removed for GA
             # sparse_optimizer.zero_grad()
 
 
@@ -324,6 +324,11 @@ def train():
             #print(i)
             #print(total_loss)
             ##print("batch num: {0}".format(i),total_loss,file=log_file_handle)
+            
+            
+            ## GA: gradient accumulation - normalise
+            total_loss = total_loss/float(deepnovo_config.accumulation_steps)
+            
             train_losses.append(total_loss.detach().cpu().numpy())
             ## compute gradient
             total_loss.backward()
@@ -335,14 +340,17 @@ def train():
 
             # clip gradient
             # torch.nn.utils.clip_grad_norm_(dense_params, deepnovo_config.max_gradient_norm)
-	    if (i+1) % deepnovo_config.accumulation_steps == 0:             # Wait for several backward steps
+            
+            ## GA: gradient accumulation
+            if (i+1) % deepnovo_config.accumulation_steps == 0:             # Wait for several backward steps
             	dense_optimizer.step()                            # Now we can do an optimizer step
             	dense_optimizer.zero_grad()
         
         #    dense_optimizer.step()
             # sparse_optimizer.step()
 
-            if (i + 1) % deepnovo_config.steps_per_validation == 0:
+            #if (i + 1) % deepnovo_config.steps_per_validation == 0:
+            if (i + 1) % (deepnovo_config.steps_per_validation *deepnovo_config.accumulation_steps) == 0: # GA - stop lr being tested too many times
                 duration = time.time() - start_time
                 step_time = duration / deepnovo_config.steps_per_validation
                 loss_cpu = total_loss.item()
