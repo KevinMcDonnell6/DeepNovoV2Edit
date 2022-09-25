@@ -273,6 +273,8 @@ def train():
         train_losses =[]
         test_losses = []
         
+        # 
+        
         for i, data in enumerate(train_data_loader):
             dense_optimizer.zero_grad()
             # sparse_optimizer.zero_grad()
@@ -333,8 +335,11 @@ def train():
 
             # clip gradient
             # torch.nn.utils.clip_grad_norm_(dense_params, deepnovo_config.max_gradient_norm)
-
-            dense_optimizer.step()
+	    if (i+1) % deepnovo_config.accumulation_steps == 0:             # Wait for several backward steps
+            	dense_optimizer.step()                            # Now we can do an optimizer step
+            	dense_optimizer.zero_grad()
+        
+        #    dense_optimizer.step()
             # sparse_optimizer.step()
 
             if (i + 1) % deepnovo_config.steps_per_validation == 0:

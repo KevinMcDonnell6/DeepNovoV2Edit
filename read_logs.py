@@ -7,7 +7,8 @@ file  = "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRe
 files= [
 
         "/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter (copy)/DeepNovo.log",
-	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log"
+	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log"
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/console_log.log"
 ]
 
 for file in files:
@@ -26,12 +27,15 @@ for file in files:
 				val_loss.append(float(vp))
 			line = file_handle.readline()
 			
-			## NB not in print to file only console
-#			if "learning" in line:
-#				#train_loss.append(min(train_loss))
-#				val_loss.append(max(train_loss))
+			## NB learning rate not in print to file only console
+			#if "learning" in line:
 			if "best" in line:
-				val_loss.append(max(train_loss))
+				#train_loss.append(min(train_loss))
+				#val_loss.append(max(train_loss))
+			#	val_loss.append(float(vp)-.1)
+				plt.vlines(len(val_loss),val_loss[-1],val_loss[0])	
 	#plt.plot(train_loss)
 	plt.plot(val_loss)
+	#plt.hlines(min(val_loss),0,len(val_loss))
+	#plt.vlines(val_loss.index(min(val_loss)),min(val_loss)-.1,min(val_loss))
 plt.show()

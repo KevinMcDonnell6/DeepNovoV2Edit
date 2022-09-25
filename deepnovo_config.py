@@ -193,6 +193,7 @@ print("num_units ", num_units)
 dropout_rate = 0.25
 
 batch_size = 8#16#32
+accumulation_steps = 4 # 32/8
 num_workers = 4#6
 print("batch_size ", batch_size)
 
