@@ -68,17 +68,28 @@ file_path = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.d
 file_path = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter.mgf"
 file_path = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf"
 
-file_name = file_path.split("/")[-1]
+file_path = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT0_Jit1.mgf"
 
-output_folder = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/"+file_name+"/"
-if not os.path.exists(output_folder):
-        # oldmask = os.umask(000)
-        os.makedirs(output_folder)
-        
-        
-output_mgf_file = output_folder+file_name
-output_feature_file = output_folder+"features.csv"
-spectrum_fw = open(output_mgf_file, 'w')
-transfer_mgf(file_path, output_feature_file,spectrum_fw)
+file_paths = [
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter_MZ1_INT0_Jit1.mgf",
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.db.10k_filter_MZ1_INT0_Jit1.mgf"
+		]
+file_paths = ["/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT1_Jit1.mgf",
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter_MZ1_INT1_Jit1.mgf",
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.db.10k_filter_MZ1_INT1_Jit1.mgf"
+]
+for file_path in file_paths:
+	file_name = file_path.split("/")[-1]
 
-spectrum_fw.close()
+	output_folder = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/"+file_name+"/"
+	if not os.path.exists(output_folder):
+		# oldmask = os.umask(000)
+		os.makedirs(output_folder)
+		
+		
+	output_mgf_file = output_folder+file_name
+	output_feature_file = output_folder+"features.csv"
+	spectrum_fw = open(output_mgf_file, 'w')
+	transfer_mgf(file_path, output_feature_file,spectrum_fw)
+
+	spectrum_fw.close()

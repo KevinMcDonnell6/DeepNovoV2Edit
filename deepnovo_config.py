@@ -7,6 +7,7 @@ from __future__ import print_function
 
 import numpy as np
 import argparse
+import os
 
 # ==============================================================================
 # FLAGS (options) for this app
@@ -30,6 +31,11 @@ args = parser.parse_args()
 train_dir = args.train_dir
 use_lstm = True
 
+logging_dir = os.path.dirname(os.path.realpath(__file__))+"/"+args.train_dir
+print(logging_dir)
+if not os.path.exists(logging_dir):
+	os.makedirs(logging_dir)
+	print("Creating Directory")
 # ==============================================================================
 # GLOBAL VARIABLES for VOCABULARY
 # ==============================================================================
@@ -197,7 +203,7 @@ accumulation_steps = 4 # 32/8
 num_workers = 4#6
 print("batch_size ", batch_size)
 
-num_epoch = 20
+num_epoch = 6#20
 
 init_lr = 1e-3
 
@@ -239,10 +245,25 @@ topk_output = 1
 #input_spectrum_file_test = "MSV000081382/cross.9high_80k.exclude_yeast/spectrum.mgf"
 #input_feature_file_test = "MSV000081382/cross.9high_80k.exclude_yeast/features.test.csv"
 
-input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf"
-input_feature_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf/features.csv" 
+#input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf"
+#input_feature_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter.mgf/features.csv" 
 input_spectrum_file_valid = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/Yeast_cross.cat.mgf.test.repeat_filter.mgf/Yeast_cross.cat.mgf.test.repeat_filter.mgf"
 input_feature_file_valid = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/Yeast_cross.cat.mgf.test.repeat_filter.mgf/features.csv"
+
+
+input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT0_Jit1.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT0_Jit1.mgf"
+#input_spectrum_file_valid = ""
+
+
+
+
+
+
+input_feature_file_train = os.path.dirname(input_spectrum_file_train)+ "/features.csv" 
+#input_feature_file_valid = os.path.dirname(input_spectrum_file_valid)+ "/features.csv" 
+
+
+
 
 # denovo files
 #denovo_input_spectrum_file = "ABRF_DDA/spectrums.mgf"
