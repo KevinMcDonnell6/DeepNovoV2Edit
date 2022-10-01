@@ -207,7 +207,7 @@ class DeepNovoTrainDataset(Dataset):
         mz_list, intensity_list = self._parse_spectrum_ion()
         peak_location, peak_intensity, spectrum_representation = process_peaks(mz_list, intensity_list, feature.mass)
 
-        assert np.max(peak_intensity) < 1.0 + 1e-5
+        assert np.max(peak_intensity) < 1.0 + 1e-5, f"scan: {feature.scan}, intensities: {peak_intensity}"
 
         peptide_id_list = [deepnovo_config.vocab[x] for x in feature.peptide]
         forward_id_input = [deepnovo_config.GO_ID] + peptide_id_list

@@ -10,7 +10,11 @@ files= [
 	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/DeepNovo.log",
 	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilter/console_log.log",
 	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA (wrong) - noNorm and zeroGrad/DeepNovo.log",
-	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA/DeepNovo.log"
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA/DeepNovo.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA_MZ1_INT0_Jit1/DeepNovo.log",
+	#"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA_MZ0_INT1_Jit0/DeepNovo.log"
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA_MZ1/DeepNovo.log",
+	"/home/kevin/Python/DeepNovoV2/DeepNovoV2-DeepNovoV2/trainExcludeYeastRealFilterGA_MZ1 (wrong peak match)/DeepNovo.log"
 ]
 
 for file in files:
@@ -36,7 +40,7 @@ for file in files:
 				#val_loss.append(max(train_loss))
 				#val_loss.append(float(vp)-.1)
 				#plt.vlines(len(val_loss),val_loss[-1],val_loss[0])	
-	plt.plot(train_loss)
+#	plt.plot(train_loss)
 	plt.plot(val_loss)
 	#plt.hlines(min(val_loss),0,len(val_loss))
 	#plt.vlines(val_loss.index(min(val_loss)),min(val_loss)-.1,min(val_loss))

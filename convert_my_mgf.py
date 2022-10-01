@@ -78,6 +78,19 @@ file_paths = ["/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeas
 		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter_MZ1_INT1_Jit1.mgf",
 		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.db.10k_filter_MZ1_INT1_Jit1.mgf"
 ]
+
+file_paths = ["/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.db.10k_filter_MZ0_INT1_Jit0.mgf",
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter_MZ0_INT1_Jit0.mgf",
+		"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ0_INT1_Jit0.mgf"
+]
+
+file_paths = ["/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter_NoN1.mgf",
+"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_cross.cat.mgf.test.repeat_filter_NoN1.mgf",
+"/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/Yeast_peaks.db.10k_filter_NoN1.mgf"
+]
+
+file_paths = ["/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1.mgf"]
+
 for file_path in file_paths:
 	file_name = file_path.split("/")[-1]
 

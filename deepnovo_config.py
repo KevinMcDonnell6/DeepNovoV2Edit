@@ -21,6 +21,8 @@ parser.add_argument("--search_denovo", dest="search_denovo", action="store_true"
 parser.add_argument("--valid", dest="valid", action="store_true")
 parser.add_argument("--test", dest="test", action="store_true")
 
+parser.add_argument("--train_file", dest="train_file", default=None)
+
 parser.set_defaults(train=False)
 parser.set_defaults(search_denovo=False)
 parser.set_defaults(test=False)
@@ -253,11 +255,20 @@ input_feature_file_valid = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltere
 
 input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT0_Jit1.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT0_Jit1.mgf"
 #input_spectrum_file_valid = ""
+input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT1_Jit1.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1_INT1_Jit1.mgf"
+input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ0_INT1_Jit0.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ0_INT1_Jit0.mgf"
+input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_NoN1.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_NoN1.mgf"
+
+input_spectrum_file_train = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1.mgf/ExcludeYeast_cross.cat.mgf.train.repeat_filter_MZ1.mgf"
 
 
 
 
 
+
+
+if args.train_file is not None:
+   input_spectrum_file_train = args.train_file
 
 input_feature_file_train = os.path.dirname(input_spectrum_file_train)+ "/features.csv" 
 #input_feature_file_valid = os.path.dirname(input_spectrum_file_valid)+ "/features.csv" 
@@ -273,7 +284,7 @@ input_feature_file_train = os.path.dirname(input_spectrum_file_train)+ "/feature
 denovo_input_spectrum_file = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/Yeast_peaks.db.10k_filter.mgf/Yeast_peaks.db.10k_filter.mgf"
 denovo_input_feature_file = "/home/kevin/Python/MSdata/ArtDataChapter/RealFiltered/DeepNovoV2/Yeast_peaks.db.10k_filter.mgf/features.csv"
 
-denovo_output_file = denovo_input_feature_file + ".deepnovo_denovo"
+denovo_output_file = logging_dir+"/"+denovo_input_spectrum_file.split("/")[-1] + ".deepnovo_denovo"
 
 predicted_format = "deepnovo"
 target_file = denovo_input_feature_file
